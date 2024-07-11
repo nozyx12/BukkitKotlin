@@ -1,0 +1,42 @@
+plugins {
+    id "java-library"
+    id "org.jetbrains.kotlin.jvm" version "2.0.0"
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+}
+
+group = "fr.nozyx"
+version = "2.0.0-1.19.4"
+
+configurations {
+    shadow
+    compile.extendsFrom shadow
+}
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+    }
+}
+
+dependencies {
+    implementation "org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT"
+    shadow "org.jetbrains.kotlin:kotlin-stdlib:2.0.0"
+    shadow "org.jetbrains.kotlin:kotlin-reflect:2.0.0"
+}
+
+jar {
+    compileJava.options.encoding = "UTF-8"
+}
+
+kotlin {
+    jvmToolchain(8)
+}
+
+shadowJar {
+    archiveClassifier = ""
+
+    configurations = [project.configurations.shadow]
+    from(project.sourceSets.main.output)
+}

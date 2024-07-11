@@ -1,0 +1,6 @@
+name: BungeeKotlin
+version: 2.0.0
+author: Nozyx
+main: fr.nozyx.bukkitkotlin.BukkitKotlin
+api-version: 1.19
+description: Bukkit plugin which includes Kotlin libs to make Kotlin-using plugins usable
